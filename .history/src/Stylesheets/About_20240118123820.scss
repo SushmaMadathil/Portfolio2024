@@ -1,0 +1,141 @@
+@import "./mixins.scss";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Jura", sans-serif;
+  color: white;
+}
+
+.logo-img {
+  float: left;
+  position: relative;
+  color: #f2f2f2;
+  text-align: center;
+  text-shadow: 2px 0 2px #f6050a, -2px 0 2px #1cf2f2;
+  /*padding: 14px 16px;*/
+  text-decoration: none;
+  font-size: 1.5em;
+  padding: 0.5em 1em;
+
+  &:hover {
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff,
+      0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff;
+
+    //text-shadow: 0 0 0.4rem #f2f2f2;
+  }
+}
+
+.background {
+  height: 100vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(#141824, 0.9),
+      rgba(#282c34, 0.98)
+    ),
+    url(../images/background3.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+}
+.content {
+    display: flex;
+
+    @media only screen and (max-width: $bp-medium) {
+        flex-direction: column;
+    }
+}
+.top-nav {
+    float:
+    color: #f2f2f2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1;
+}
+
+.heading-primary {
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  backface-visibility: hidden;
+  padding: 15rem 0;
+
+  &--main {
+    display: block;
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: 1rem;
+
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+
+    @include respond(phone) {
+      letter-spacing: 0.5rem;
+      font-size: 2rem;
+    }
+    @include respond(big-desktop) {
+      letter-spacing: 1rem;
+      font-size: 7rem;
+    }
+    //animation-delay: 3s;
+    //animation-iteration-count: 3;
+  }
+
+  &--sub {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5rem;
+    animation: moveInRight 3s ease-out;
+
+    @include respond(phone) {
+      letter-spacing: 0.5rem;
+    }
+    @include respond(big-desktop) {
+        letter-spacing: 0.8rem;
+        font-size: 2.5rem;
+      }
+  }
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
